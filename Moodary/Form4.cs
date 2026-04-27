@@ -1,13 +1,7 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Moodary
@@ -50,7 +44,7 @@ namespace Moodary
             button2.ForeColor = Color.Black;
             button2.Font = new Font("Segoe UI", 10, FontStyle.Bold);
 
-            this.Shown += (s, e) =>
+            Shown += (s, e) =>
             {
                 MakeButtonRounded(button1, 20);
                 MakeButtonRounded(button2, 20);
@@ -59,19 +53,18 @@ namespace Moodary
                 MakeTextBoxRounded(textBox3, 20);
 
                 button1.Paint += (s2, e2) => DrawRoundedBorder(button1, e2, 20);
-                button2.Paint += (s2, e2) => DrawRoundedBorder(button1, e2, 20);
+                button2.Paint += (s2, e2) => DrawRoundedBorder(button2, e2, 20);
                 textBox1.Paint += (s2, e2) => DrawRoundedBorder(textBox1, e2, 20);
                 textBox2.Paint += (s2, e2) => DrawRoundedBorder(textBox2, e2, 20);
                 textBox3.Paint += (s2, e2) => DrawRoundedBorder(textBox3, e2, 20);
             };
 
-            this.BackColor = Color.FromArgb(255, 220, 100);
+            BackColor = Color.FromArgb(255, 220, 100);
         }
 
         private void MakeButtonRounded(Button button, int radius)
         {
             GraphicsPath path = new GraphicsPath();
-
             int w = button.Width;
             int h = button.Height;
 
@@ -79,7 +72,6 @@ namespace Moodary
             path.AddLine(h / 2, 0, w - h / 2, 0);
             path.AddArc(w - h, 0, h, h, 270, 180);
             path.AddLine(w - h / 2, h, h / 2, h);
-
             path.CloseFigure();
             button.Region = new Region(path);
         }
@@ -88,7 +80,6 @@ namespace Moodary
         {
             GraphicsPath path = new GraphicsPath();
             Rectangle rect = control.ClientRectangle;
-
             int d = radius * 2;
 
             path.AddArc(rect.X, rect.Y, d, d, 180, 90);
@@ -96,17 +87,14 @@ namespace Moodary
             path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
             path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
             path.CloseFigure();
-
             control.Region = new Region(path);
         }
 
         private void DrawRoundedBorder(Control control, PaintEventArgs e, int radius)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
             Rectangle rect = new Rectangle(0, 0, control.Width - 1, control.Height - 1);
             GraphicsPath path = new GraphicsPath();
-
             int d = radius * 2;
 
             path.AddArc(rect.X, rect.Y, d, d, 180, 90);
@@ -123,64 +111,61 @@ namespace Moodary
 
         private void Form4_Load(object sender, EventArgs e)
         {
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();
             form1.Show();
-            this.Hide();
+            Hide();
         }
 
-            private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text.Trim();
-            string password = textBox2.Text.Trim();
+            string password = textBox2.Text;
+            string confirmPassword = textBox3.Text;
 
-            if (username == "" || password == "")
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword))
             {
                 MessageBox.Show("Please fill all fields.");
                 return;
             }
 
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("Passwords do not match.");
+                return;
+            }
+
             try
             {
-                using (var conn = DB.GetConnection())
-                {
-                    string query = "INSERT INTO Users (Username, Password) VALUES (@user, @pass)";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                UserRepository.CreateUser(username, PasswordHasher.HashPassword(password));
+                MessageBox.Show("Account created!");
 
-                    cmd.Parameters.AddWithValue("@user", username);
-                    cmd.Parameters.AddWithValue("@pass", password);
-
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Account created!");
-
-                    Form1 login = new Form1();
-                    login.Show();
-                    this.Hide();
-                }
+                Form1 login = new Form1();
+                login.Show();
+                Hide();
             }
             catch (MySqlException ex)
             {
                 if (ex.Number == 1062)
+                {
                     MessageBox.Show("Username already exists!");
+                }
                 else
-                    MessageBox.Show(ex.Message);
+                {
+                    MessageBox.Show("Database error: " + ex.Message);
+                }
             }
         }
     }
-    
 }

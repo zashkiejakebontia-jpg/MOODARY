@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,59 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="20260408_2107_Image Generation_remix_01knpk7swxfsgvpb3726adxfb5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\20260408_2107_Image Generation_remix_01knpk7swxfsgvpb3726adxfb5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cc039011-8553-4583-93d1-b7f57fe733c5-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cc039011-8553-4583-93d1-b7f57fe733c5-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fear" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fear.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="7ec0e7e9-4ced-4ce5-a0b6-75bd66a21ecd-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\7ec0e7e9-4ced-4ce5-a0b6-75bd66a21ecd-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="20260320_1725_Image Generation_remix_01km58z29pf5db6j2fvrydt11r" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\20260320_1725_Image Generation_remix_01km58z29pf5db6j2fvrydt11r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="account-setting-icon-symbol-design-illustration-vector-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\account-setting-icon-symbol-design-illustration-vector-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="happy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\happy.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1b04a7d7-549a-454d-aef6-e3bfc47cdde2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1b04a7d7-549a-454d-aef6-e3bfc47cdde2.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="angry" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\angry.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sad" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sad.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="57166a67-fd05-4e75-a653-961b24594083" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\57166a67-fd05-4e75-a653-961b24594083.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="disgust" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disgust.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="b0a7a200e5e72cc4cb11ad06cdac6557" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\b0a7a200e5e72cc4cb11ad06cdac6557.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="20260321_1953_Image Generation_remix_01km83v9czfayag8bvfb4gaaey" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\20260321_1953_Image Generation_remix_01km83v9czfayag8bvfb4gaaey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="6ae99000-6765-480e-8ad8-5cfd6771745d-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\6ae99000-6765-480e-8ad8-5cfd6771745d-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="5f6134ac-edff-4875-85f3-bfb0644a9a1f-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5f6134ac-edff-4875-85f3-bfb0644a9a1f-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="20260320_2036_Moonlit Dreamscape_remix_01km5kywccec7rwf07dmcsa839" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\20260320_2036_Moonlit Dreamscape_remix_01km5kywccec7rwf07dmcsa839.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="disgust1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disgust1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

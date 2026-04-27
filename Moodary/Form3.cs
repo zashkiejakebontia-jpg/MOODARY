@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Moodary
 {
     public partial class Form3 : Form
     {
+        private UserControl1 homeControl;
+
         public Form3()
         {
             InitializeComponent();
@@ -22,21 +18,29 @@ namespace Moodary
             button1.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button1.UseVisualStyleBackColor = false;
-
         }
 
         private void Form3_Load(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserControl1 userControl1 = new UserControl1();
-            userControl1.Location = new Point(0, 0);
+            ShowHomeControl();
+            button1.Visible = false;
+        }
 
-            this.Controls.Add(userControl1);
-            userControl1.BringToFront();
+        private void ShowHomeControl()
+        {
+            if (homeControl == null || homeControl.IsDisposed)
+            {
+                homeControl = new UserControl1();
+                homeControl.Location = new Point(0, 0);
+                Controls.Add(homeControl);
+            }
+
+            homeControl.BringToFront();
+            button1.BringToFront();
         }
     }
 }

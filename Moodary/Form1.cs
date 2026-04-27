@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -17,7 +17,7 @@ namespace Moodary
             button1.BackColor = Color.White;
             button1.ForeColor = Color.Black;
             button1.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            button1.FlatAppearance.MouseOverBackColor = Color.Transparent; 
+            button1.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
 
             button2.FlatStyle = FlatStyle.Flat;
@@ -55,9 +55,9 @@ namespace Moodary
             textBox2.ForeColor = Color.Black;
             textBox2.TextAlign = HorizontalAlignment.Center;
             textBox2.Font = new Font("Comic Sans MS", 15);
-            textBox2.PasswordChar = '•'; 
+            textBox2.PasswordChar = '•';
 
-            this.Shown += (s, e) =>
+            Shown += (s, e) =>
             {
                 MakeButtonRounded(button1, 20);
                 MakeButtonRounded(button4, 20);
@@ -70,43 +70,51 @@ namespace Moodary
                 textBox2.Paint += (s2, e2) => DrawRoundedBorder(textBox2, e2, 20);
             };
 
-            this.BackColor = Color.FromArgb(255, 220, 100);
+            BackColor = Color.FromArgb(255, 220, 100);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text.Trim();
-            string password = textBox2.Text.Trim();
+            string password = textBox2.Text;
 
-            using (var conn = DB.GetConnection())
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                string query = "SELECT COUNT(*) FROM Users WHERE Username=@user AND Password=@pass";
+                MessageBox.Show("Please enter your username and password.");
+                return;
+            }
 
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@user", username);
-                cmd.Parameters.AddWithValue("@pass", password);
-
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                if (count > 0)
-                {
-                    MessageBox.Show("Login successful!");
-
-                    Form3 main = new Form3();
-                    main.Show();
-                    this.Hide();
-                }
-                else
+            try
+            {
+                UserAccount user = UserRepository.GetUserByUsername(username);
+                if (user == null || !PasswordHasher.VerifyPassword(password, user.PasswordHash))
                 {
                     MessageBox.Show("Invalid login.");
+                    return;
                 }
+
+                SharedData.SetCurrentUser(user);
+                SharedData.ReplaceJournalEntries(JournalRepository.GetEntriesForUser(user.Id));
+
+                Form3 main = new Form3();
+                main.Show();
+                main.BringToFront();
+                main.Activate();
+                Hide();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Database error: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Login failed: " + ex.Message);
             }
         }
 
         private void MakeButtonRounded(Button button, int radius)
         {
             GraphicsPath path = new GraphicsPath();
-
             int w = button.Width;
             int h = button.Height;
 
@@ -114,7 +122,6 @@ namespace Moodary
             path.AddLine(h / 2, 0, w - h / 2, 0);
             path.AddArc(w - h, 0, h, h, 270, 180);
             path.AddLine(w - h / 2, h, h / 2, h);
-
             path.CloseFigure();
             button.Region = new Region(path);
         }
@@ -123,7 +130,6 @@ namespace Moodary
         {
             GraphicsPath path = new GraphicsPath();
             Rectangle rect = control.ClientRectangle;
-
             int d = radius * 2;
 
             path.AddArc(rect.X, rect.Y, d, d, 180, 90);
@@ -131,7 +137,6 @@ namespace Moodary
             path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
             path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
             path.CloseFigure();
-
             control.Region = new Region(path);
         }
 
@@ -141,7 +146,6 @@ namespace Moodary
 
             Rectangle rect = new Rectangle(0, 0, control.Width - 1, control.Height - 1);
             GraphicsPath path = new GraphicsPath();
-
             int d = radius * 2;
 
             path.AddArc(rect.X, rect.Y, d, d, 180, 90);
@@ -158,7 +162,6 @@ namespace Moodary
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -168,65 +171,58 @@ namespace Moodary
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Form5 form5 = new Form5();
             form5.Show();
-            this.Hide();
+            Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
             form2.Show();
-            this.Hide();
+            Hide();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
             form2.Show();
-            this.Hide();
+            Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Form4 form4 = new Form4();
             form4.Show();
-            this.Hide();
+            Hide();
         }
     }
 }
